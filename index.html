@@ -338,7 +338,7 @@
 
   const $ = id => document.getElementById(id);
   const urlParams = new URLSearchParams(window.location.search);
-  const invitacionId = urlParams.get('id');
+  const invitacionId = urlParams.get('Id') || urlParams.get('id') || urlParams.get('ID');
 
   function configurado(){
     return WEBAPP_URL && !WEBAPP_URL.startsWith("PEGA_AQUI");
