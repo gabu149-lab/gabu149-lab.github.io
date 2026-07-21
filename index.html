@@ -345,7 +345,7 @@
     return WEBAPP_URL && !WEBAPP_URL.startsWith("PEGA_AQUI");
   }
 
-  $('btnBuscar').addEventListener('click', async () => {
+  async function buscarInvitacion(){
     const val = invitacionId;
 
     $('notFound').classList.remove('show');
@@ -360,9 +360,6 @@
       return;
     }
 
-    $('btnBuscar').disabled = true;
-    $('btnBuscar').textContent = "Buscando...";
-
     let data;
     try{
       const resp = await fetch(`${WEBAPP_URL}?action=buscar&id=${encodeURIComponent(val)}`);
@@ -370,12 +367,8 @@
     }catch(err){
       $('notFound').textContent = "No se pudo conectar. Verifica tu conexión a internet e inténtalo de nuevo.";
       $('notFound').classList.add('show');
-      $('btnBuscar').disabled = false;
-      $('btnBuscar').textContent = "Continuar";
       return;
     }
-    $('btnBuscar').disabled = false;
-    $('btnBuscar').textContent = "Continuar";
 
     if(!data.ok || !data.found){
       $('notFound').textContent = 'No encontramos ese nombre. Revisa que esté escrito igual que en tu invitación (sin abreviar) e inténtalo de nuevo.';
@@ -383,11 +376,11 @@
       return;
     }
 
-    familiaActual = { id: data.id, personas: data.personas};
+    familiaActual = { id: data.id,  nombre: data.nombre, personas: data.personas};
     personasMax = data.personas;
     personasSel = 1;
     $('numPersonas').textContent = personasSel;
-    $('saludo').textContent = `¡Hola familia ${data.nombre}!`;
+    $('saludo').textContent = `¡Hola ${data.nombre}!`;
     $('cuposTxt').textContent = `Tienen ${data.personas} cupo${data.personas>1?'s':''} disponible${data.personas>1?'s':''}`;
     $('resultBox').classList.add('show');
     $('btnSi').classList.remove('selected-yes');
