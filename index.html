@@ -460,6 +460,18 @@
       $('directions').classList.remove('show');
     }
   }
+
+  window.addEventListener('load', () => {
+
+  if(invitacionId){
+    buscarInvitacion();
+  }else{
+    $('notFound').textContent = "No se encontró el código de invitación.";
+    $('notFound').classList.add('show');
+  }
+
+});
+  
 </script>
 </body>
 </html>
