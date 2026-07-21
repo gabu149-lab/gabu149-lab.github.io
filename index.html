@@ -419,9 +419,9 @@
   $('btnConfirmar').addEventListener('click', async () => {
     if(asistira === null || !familiaActual) return;
     const payload = {
-      nombre: familiaActual.nombre,
+      id: familiaActual.id,
       asistira,
-      s: asistira ? personasSel : 0
+      personas: asistira ? personasSel : 0
     };
 
     $('btnConfirmar').disabled = true;
