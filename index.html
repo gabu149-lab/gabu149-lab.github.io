@@ -263,9 +263,10 @@
 
   <hr class="divider">
 
-  <label for="nombre">Nombre de tu invitación</label>
-  <input type="text" id="nombre" placeholder="Ej: García Torres" autocomplete="off">
-  <div class="hint">Escríbelo tal como aparece en el "Para:" de tu invitación.</div>
+  <label>Invitación personalizada</label>
+  <div class="hint">
+    Esta invitación ya está asociada a tu familia.
+  </div>
   <button class="btn-main" id="btnBuscar">Continuar</button>
 
   <div class="not-found" id="notFound">
@@ -343,14 +344,15 @@
   let familiaActual = null;
 
   const $ = id => document.getElementById(id);
+  const urlParams = new URLSearchParams(window.location.search);
+  const invitacionId = urlParams.get('id');
 
   function configurado(){
     return WEBAPP_URL && !WEBAPP_URL.startsWith("PEGA_AQUI");
   }
 
   $('btnBuscar').addEventListener('click', async () => {
-    const val = $('nombre').value;
-    if(!val.trim()) return;
+    const val = invitacionId;
 
     $('notFound').classList.remove('show');
     $('resultBox').classList.remove('show');
@@ -369,7 +371,7 @@
 
     let data;
     try{
-      const resp = await fetch(`${WEBAPP_URL}?action=buscar&nombre=${encodeURIComponent(val)}`);
+      const resp = await fetch(`${WEBAPP_URL}?action=buscar&id=${encodeURIComponent(val)}`);
       data = await resp.json();
     }catch(err){
       $('notFound').textContent = "No se pudo conectar. Verifica tu conexión a internet e inténtalo de nuevo.";
@@ -387,7 +389,7 @@
       return;
     }
 
-    familiaActual = { nombre: data.nombre, personas: data.personas };
+    familiaActual = { id: data.id, personas: data.personas};
     personasMax = data.personas;
     personasSel = 1;
     $('numPersonas').textContent = personasSel;
@@ -433,7 +435,7 @@
     const payload = {
       nombre: familiaActual.nombre,
       asistira,
-      personas: asistira ? personasSel : 0
+      s: asistira ? personasSel : 0
     };
 
     $('btnConfirmar').disabled = true;
