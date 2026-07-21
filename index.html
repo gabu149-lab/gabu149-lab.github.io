@@ -289,7 +289,7 @@
   </div>
 
   <div class="thanks" id="thanksYes">
-    <p>💗 ¡Gracias por confirmar! Los esperamos con muchas ganas.</p>
+    <p>💗 ¡Gracias por confirmar!</p>
   </div>
   <div class="thanks" id="thanksNo">
     <p>Gracias por avisarnos. ¡Los vamos a extrañar ese día! 💙</p>
@@ -300,20 +300,7 @@
       <strong>20 de septiembre, 10:00am</strong><br>
       Finca "Moreno Ortiz" — El Deseo, Milagro
     </div>
-    <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;border-radius:14px;border:1px solid var(--pink-line);background:#FBF6F8;display:block;margin-bottom:10px;">
-      <rect width="420" height="220" fill="#FBF6F8"/>
-      <path d="M20 190 C 80 120, 140 200, 200 140 S 320 60, 400 40" stroke="#E88CAE" stroke-width="4" fill="none" stroke-dasharray="10 8" stroke-linecap="round"/>
-      <circle cx="20" cy="190" r="9" fill="#BCE6EA" stroke="#2E4057" stroke-width="1.5"/>
-      <text x="20" y="210" font-family="Poppins, sans-serif" font-size="11" fill="#2E4057" text-anchor="middle">Salida</text>
-      <path d="M392 30 l8 -14 l8 14 z" fill="#E88CAE"/>
-      <circle cx="400" cy="40" r="10" fill="#E88CAE" stroke="#2E4057" stroke-width="1.5"/>
-      <text x="400" y="24" font-family="Poppins, sans-serif" font-size="11" fill="#2E4057" text-anchor="middle">Finca</text>
-      <rect x="130" y="150" width="26" height="18" fill="#CFC3E8" stroke="#2E4057" stroke-width="1"/>
-      <text x="143" y="182" font-family="Poppins, sans-serif" font-size="9" fill="#5B6B85" text-anchor="middle">Gasolinera</text>
-      <rect x="250" y="70" width="26" height="18" fill="#CFC3E8" stroke="#2E4057" stroke-width="1"/>
-      <text x="263" y="102" font-family="Poppins, sans-serif" font-size="9" fill="#5B6B85" text-anchor="middle">Redondel</text>
-      <text x="210" y="200" font-family="Poppins, sans-serif" font-size="10" fill="#a9a9b8" text-anchor="middle" font-style="italic">Croquis de ejemplo — reemplázalo por la foto real del camino</text>
-    </svg>
+    <img src="finca.jpg" alt="Foto de la finca">
     <a class="map-btn" id="mapLink" href="#" target="_blank" rel="noopener">
       📍 Abrir ubicación en Google Maps
     </a>
@@ -328,8 +315,7 @@
 
   const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim().replace(/\s+/g," ");
 
-  const mapsQuery = encodeURIComponent('Finca Moreno Ortiz, El Deseo, Milagro, Ecuador');
-  document.getElementById('mapLink').href = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+  document.getElementById('mapLink').href = `https://maps.app.goo.gl/MpumoSn42Tmk5bMt8?g_st=aw`;
 
   let personasMax = 1;
   let personasSel = 1;
